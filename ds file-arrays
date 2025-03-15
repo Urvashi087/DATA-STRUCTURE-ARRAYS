@@ -1,0 +1,53 @@
+AIM-1. -  WRITE A PROGRAM IN C TO IMPLEMENT INSERTION IN 1-D ARRAYS.
+
+PROGRAM- #include <stdio.h>
+
+void insertElement(int arr[], int *size, int pos, int value) {
+    // Shift elements to the right to make space for the new element
+    for (int i = *size - 1; i >= pos; i--) {
+        arr[i + 1] = arr[i];
+    }
+    
+    // Insert the new element at the desired position
+    arr[pos] = value;
+    
+    // Increment the size of the array
+    (*size)++;
+}
+
+int main() {
+    int arr[100], n, pos, value;
+
+    // Input the size of the array
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    // Input the elements of the array
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Input the position and value to insert
+    printf("Enter the position to insert the element (0 to %d): ", n);
+    scanf("%d", &pos);
+    printf("Enter the value to insert: ");
+    scanf("%d", &value);
+
+    // Check if the position is valid
+    if (pos < 0 || pos > n) {
+        printf("Invalid position!\n");
+    } else {
+        // Perform the insertion
+        insertElement(arr, &n, pos, value);
+
+        // Print the updated array
+        printf("Updated array: ");
+        for (int i = 0; i < n; i++) {
+            printf("%d ", arr[i]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
