@@ -1,0 +1,51 @@
+AIM-5.-  WRITE A PROGRAM IN C TO IMPLEMENT UPDATION IN 1-D ARRAYS.
+
+PROGRAM-  #include <stdio.h>
+
+// Function to update an element at a given position
+void updateElement(int arr[], int size, int pos, int new_value) {
+    if (pos < 0 || pos >= size) {
+        printf("Invalid position!\n");
+    } else {
+        arr[pos] = new_value;  // Update the element at the given position
+        printf("Element at index %d has been updated to %d.\n", pos, new_value);
+    }
+}
+
+// Function to print the array
+void printArray(int arr[], int size) {
+    printf("Updated array: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int arr[100], n, pos, new_value;
+
+    // Input the number of elements
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    // Input the elements of the array
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Ask for the position and new value to update
+    printf("Enter the position to update (0 to %d): ", n - 1);
+    scanf("%d", &pos);
+    printf("Enter the new value: ");
+    scanf("%d", &new_value);
+
+    // Update the element at the specified position
+    updateElement(arr, n, pos, new_value);
+
+    // Print the updated array
+    printArray(arr, n);
+
+    return 0;
+}
+
