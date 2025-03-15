@@ -1,0 +1,28 @@
+AIM-3.- WRITE A PROGRAM IN C TO IMPLEMENT LINEAR SEARCHING IN 1-D ARRAYS.
+
+PROGRAM- 
+#include <stdio.h>
+
+int main() {
+    int arr[8] = {1, 2, 3, 4, 5, 6, 7, 8};
+    int search;
+    printf("Enter element you want to search: ");
+    scanf("%d", &search);
+    int found = 0;
+
+    for (int i = 0; i < 8; i++) {
+        if (arr[i] == search) {
+            found = 1;
+            break;  // Exit the loop once the element is found
+        }
+    }
+
+    if (found == 1) {
+        printf("Your searched element was found");
+    } else {
+        printf("not found---->");
+    }
+
+    return 0;
+} 
+
