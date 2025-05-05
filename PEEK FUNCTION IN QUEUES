@@ -1,0 +1,23 @@
+AIM 3: PEEK FUNCTION IN QUEUES.
+#include <stdio.h>
+#define SIZE 100
+int queue[SIZE];
+int front = -1;
+int rear = -1;
+void peek() {
+ if (front == -1 || front > rear) {
+ printf("Queue is empty\n");
+ return;
+ }
+ printf("Front element: %d\n", queue[front]);
+}
+int main() {
+ // Simulate a queue with some elements
+ rear = 2;
+ front = 0;
+ queue[0] = 10;
+ queue[1] = 20;
+ queue[2] = 30;
+ peek(); // Should print: Front element: 10
+ return 0;
+}
