@@ -1,0 +1,35 @@
+AIM 2: DEQUUE OR DELETION IN 
+QUEUES.
+#include <stdio.h>
+#define SIZE 100
+int queue[SIZE]; // Global queue array
+int front = -1; // Front pointer
+int rear = -1; // Rear pointer
+// Dequeue function
+void dequeue() {
+ if (front == -1 || front > rear) {
+ printf("Queue Underflow\n");
+ return;
+ }
+ printf("Deleted %d\n", queue[front]);
+ front++;
+ // Reset front and rear when queue becomes 
+empty
+ if (front > rear) {
+ front = rear = -1;
+ }
+}
+// Main function to test
+int main() {
+ // Simulate inserting some elements
+ rear = 2;
+ front = 0;
+ queue[0] = 10;
+ queue[1] = 20;
+ queue[2] = 30;
+ dequeue(); // Should delete 10
+ dequeue(); // Should delete 20
+ dequeue(); // Should delete 30
+ dequeue(); // Should print underflow
+return 0;
+}
