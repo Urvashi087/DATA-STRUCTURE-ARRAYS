@@ -1,0 +1,67 @@
+AIM 5: DELETING AN ELEMENT AT THE 
+ENDING OF THE LINKED LIST.
+#include <stdio.h>
+#include <stdlib.h>
+// Node structure
+struct node {
+ int data;
+ struct node *next;
+};
+// Global head pointer
+struct node *head = NULL;
+// Display the list
+void printList() {
+ struct node *p = head;
+ printf("\n[");
+ while (p != NULL) {
+ printf(" %d ", p->data);
+ p = p->next;
+ }
+ printf("]");
+}
+// Insert at the beginning
+void insertatbegin(int data) {
+ struct node *lk = (struct node *)malloc(sizeof(struct 
+node));
+ if (lk == NULL) {
+ printf("Memory allocation failed\n");
+ return;
+ }
+ lk->data = data;
+ lk->next = head;
+ head = lk;
+}
+// Delete the last node
+void deleteatend() {
+ if (head == NULL) {
+ printf("\nList is empty.");
+ return;
+ }
+ // Only one node
+ if (head->next == NULL) {
+ free(head);
+ head = NULL;
+ return;
+ }
+ struct node *linkedlist = head;
+ // Traverse to second last node
+ while (linkedlist->next->next != NULL) {
+ linkedlist = linkedlist->next;
+ }
+ // Delete last node
+ free(linkedlist->next);
+ linkedlist->next = NULL;
+}
+int main() {
+ insertatbegin(12);
+ insertatbegin(22);
+ insertatbegin(30);
+ insertatbegin(40);
+ insertatbegin(55);
+ printf("Linked List: ");
+ printList();
+ deleteatend();
+ printf("\nLinked List after deletion: ");
+ printList();
+ return 0;
+}
