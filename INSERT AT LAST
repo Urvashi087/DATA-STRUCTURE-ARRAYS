@@ -1,0 +1,62 @@
+AIM 2: ADDING AN ELEMENT AT THE 
+ENDING OF THE LINKED LIST.
+#include <stdio.h>
+#include <stdlib.h>
+struct node {
+ int data;
+ struct node *next;
+};
+struct node *head = NULL;
+// Display the list
+void printList() {
+ struct node *p = head;
+ printf("\n[");
+ while (p != NULL) {
+ printf(" %d ", p->data);
+ p = p->next;
+ }
+ printf("]\n");
+}
+// Insert at the beginning
+void insertatbegin(int data) {
+ struct node *lk = (struct node*) malloc(sizeof(struct 
+node));
+ if (lk == NULL) {
+ printf("Memory allocation failed\n");
+ return;
+ }
+ lk->data = data;
+ lk->next = head;
+ head = lk;
+}
+// Insert at the end
+void insertatend(int data) {
+ struct node *lk = (struct node*) malloc(sizeof(struct 
+node));
+ if (lk == NULL) {
+ printf("Memory allocation failed\n");
+ return;
+ }
+ lk->data = data;
+ lk->next = NULL;
+ if (head == NULL) {
+ // If the list is empty
+ head = lk;
+ } else {
+ struct node *linkedlist = head;
+ while (linkedlist->next != NULL)
+ linkedlist = linkedlist->next;
+ linkedlist->next = lk;
+ }
+}
+// Main function
+int main() {
+ insertatbegin(12); // List: 12
+ insertatend(22); // List: 12 -> 22
+ insertatend(30); // List: 12 -> 22 -> 30
+ insertatend(44); // ...
+ insertatend(50);
+ printf("Linked List: ");
+ printList();
+ return 0;
+}
