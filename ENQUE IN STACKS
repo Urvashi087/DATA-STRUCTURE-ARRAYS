@@ -1,0 +1,24 @@
+AIM1: ENQUE OR THE INSERTION IN 
+QUEUES
+#include <stdio.h>
+#define SIZE 100
+int queue[SIZE];
+int front = -1, rear = -1;
+// Enqueue Function
+void enqueue(int value) {
+ if (rear == SIZE - 1) {
+ printf("Queue Overflow\n");
+ return;
+ }
+ if (front == -1) front = 0;
+ rear++;
+ queue[rear] = value;
+ printf("Inserted %d\n", value);
+}
+// Main function
+int main() {
+ enqueue(10);
+ enqueue(20);
+ enqueue(30);
+ return 0;
+}
