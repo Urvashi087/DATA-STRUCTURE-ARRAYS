@@ -1,0 +1,42 @@
+AIM1: ADDING AN ELEMENT AT THE 
+BEGINNING OF THE LINKED LIST.
+#include <stdio.h>
+#include <stdlib.h>
+// Define node structure
+struct node {
+ int data;
+ struct node *next;
+};
+// Global pointers
+struct node *head = NULL;
+// Function to insert at the beginning
+void insertatbegin(int data) {
+ struct node *lk = (struct node*) malloc(sizeof(struct node));
+ if (lk == NULL) {
+ printf("Memory allocation failed\n");
+ return;
+ }
+ lk->data = data;
+ lk->next = head;
+ head = lk;
+}
+// Function to print the list
+void printList() {
+ struct node *p = head;
+ printf("\n[");
+ while (p != NULL) {
+ printf(" %d ", p->data);
+ p = p->next;
+ }
+ printf("]\n");
+}
+int main() {
+ insertatbegin(12);
+ insertatbegin(22);
+ insertatbegin(30);
+ insertatbegin(44);
+ insertatbegin(50);
+ printf("Linked List: ");
+ printList();
+ return 0;
+}
