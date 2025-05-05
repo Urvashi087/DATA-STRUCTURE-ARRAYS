@@ -1,0 +1,56 @@
+AIM 3: ADDING AN ELEMENT AT ANY 
+POSITION WITHIN THE LIST.
+#include <stdio.h>
+#include <stdlib.h>
+// Node structure
+struct node {
+ int data;
+ struct node *next;
+};
+// Global head pointer
+struct node *head = NULL;
+// Display the list
+void printList() {
+ struct node *p = head;
+ printf("\n[");
+ while (p != NULL) {
+ printf(" %d ", p->data);
+ p = p->next;
+ }
+ printf("]\n");
+}
+// Insert at beginning
+void insertatbegin(int data) {
+ struct node *lk = (struct node *)malloc(sizeof(struct node));
+ if (lk == NULL) {
+ printf("Memory allocation failed\n");
+ return;
+ }
+ lk->data = data;
+ lk->next = head;
+ head = lk;
+}
+// Insert after a given node
+void insertafternode(struct node *list, int data) {
+ if (list == NULL) {
+ printf("The given previous node is NULL.\n");
+ return;
+ }
+ struct node *lk = (struct node *)malloc(sizeof(struct node));
+ if (lk == NULL) {
+ printf("Memory allocation failed\n");
+ return;
+ }
+ lk->data = data;
+ lk->next = list->next;
+ list->next = lk;
+}
+// Main function
+int main() {
+ insertatbegin(12); // List: 12
+ insertatbegin(22); // List: 22 -> 12
+ insertafternode(head->next, 30); // Insert 30 after 12
+ printf("Linked List: ");
+ printList();
+ return 0;
+}
