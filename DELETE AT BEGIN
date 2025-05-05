@@ -1,0 +1,55 @@
+AIM 4: DELETION AT THE BEGINNING 
+OF THE LINKED LIST.
+#include <stdio.h>
+#include <stdlib.h>
+// Node structure
+struct node {
+ int data;
+ struct node *next;
+};
+// Global head pointer
+struct node *head = NULL;
+// Display the list
+void printList() {
+ struct node *p = head;
+ printf("\n[");
+ while (p != NULL) {
+ printf(" %d ", p->data);
+ p = p->next;
+ }
+ printf("]\n");
+}
+// Insertion at the beginning
+void insertatbegin(int data) {
+ struct node *lk = (struct node *)malloc(sizeof(struct node));
+ if (lk == NULL) {
+ printf("Memory allocation failed\n");
+ return;
+ }
+ lk->data = data;
+ lk->next = head;
+ head = lk;
+}
+// Delete at beginning
+void deleteatbegin() {
+ if (head == NULL) {
+ printf("List is already empty.\n");
+ return;
+ }
+ struct node *temp = head;
+ head = head->next;
+ free(temp); // Free memory to avoid leak
+}
+int main() {
+ insertatbegin(12);
+ insertatbegin(22);
+ insertatbegin(30);
+ insertatbegin(40);
+ insertatbegin(55);
+ printf("Linked List: ");
+ printList();
+ deleteatbegin();
+ printf("\nLinked List after deletion: ");
+ printList();
+ return 0;
+}
